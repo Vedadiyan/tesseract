@@ -20,8 +20,8 @@ const (
 
 type (
     MyType {
-        @Name(Test("ok"),"field_name")
-        @Test("field_name")
+        @JSON("field_name")
+        @Validation("required")
         X []int, 
         @Name("field_name2")
         Y otherType,

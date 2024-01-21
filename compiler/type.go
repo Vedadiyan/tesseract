@@ -31,6 +31,29 @@ type (
 	}
 )
 
+const (
+	NONE TypeCode = iota
+	INT
+	LONG
+	SHORT
+	BYTE
+	BOOL
+	DATETIME
+	STRING
+	UNKNOWN
+	TYPE
+	LIST_OF_NONE TypeCode = 100 + iota
+	LIST_OF_INT
+	LIST_OF_LONG
+	LIST_OF_SHORT
+	LIST_OF_BYTE
+	LIST_OF_BOOL
+	LIST_OF_DATETIME
+	LIST_OF_STRING
+	LIST_OF_UNKNOWN
+	LIST_OF_TYPE
+)
+
 func GetType(packageName string, typeDefinition parser.ITypeDefinitionContext) (*Type, error) {
 	attributes, err := GetAttributes(typeDefinition.AllAttribute())
 	if err != nil {
@@ -90,33 +113,33 @@ func GetFieldType(fieldType parser.IFieldTypeContext) TypeCode {
 
 func GetTypeCode(dataType parser.IDataTypeContext) TypeCode {
 	if intType := dataType.INT(); intType != nil {
-		return 1
+		return INT
 	}
 	if longType := dataType.LONG(); longType != nil {
-		return 2
+		return LONG
 	}
 	if shortType := dataType.SHORT(); shortType != nil {
-		return 3
+		return SHORT
 	}
 	if byteType := dataType.BYTE(); byteType != nil {
-		return 4
+		return BYTE
 	}
 	if boolType := dataType.BOOL(); boolType != nil {
-		return 5
+		return BOOL
 	}
 	if stringType := dataType.STRING(); stringType != nil {
-		return 6
+		return STRING
 	}
 	if dateTypeType := dataType.DATETIME(); dateTypeType != nil {
-		return 7
+		return DATETIME
 	}
 	if unknownType := dataType.UNKNOWN(); unknownType != nil {
-		return 8
+		return UNKNOWN
 	}
 	if referenceType := dataType.IDENT(); referenceType != nil {
-		return 9
+		return TYPE
 	}
-	return 0
+	return NONE
 }
 
 func GetArg(arg parser.IArgContext) (Arg, error) {
@@ -126,7 +149,7 @@ func GetArg(arg parser.IArgContext) (Arg, error) {
 			return nil, err
 		}
 		return &Call{
-			Name: call.GetText(),
+			Name: call.IDENT().GetText(),
 			Args: args,
 		}, nil
 	}
