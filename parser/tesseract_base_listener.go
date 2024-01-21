@@ -81,11 +81,11 @@ func (s *BasetesseractListener) EnterTypeDefinition(ctx *TypeDefinitionContext) 
 // ExitTypeDefinition is called when production typeDefinition is exited.
 func (s *BasetesseractListener) ExitTypeDefinition(ctx *TypeDefinitionContext) {}
 
-// EnterType is called when production type is entered.
-func (s *BasetesseractListener) EnterType(ctx *TypeContext) {}
+// EnterDataType is called when production dataType is entered.
+func (s *BasetesseractListener) EnterDataType(ctx *DataTypeContext) {}
 
-// ExitType is called when production type is exited.
-func (s *BasetesseractListener) ExitType(ctx *TypeContext) {}
+// ExitDataType is called when production dataType is exited.
+func (s *BasetesseractListener) ExitDataType(ctx *DataTypeContext) {}
 
 // EnterList is called when production list is entered.
 func (s *BasetesseractListener) EnterList(ctx *ListContext) {}

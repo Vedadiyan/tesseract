@@ -49,7 +49,7 @@ func tesseractParserInit() {
 	staticData.RuleNames = []string{
 		"program", "importStatement", "useStatement", "packageStatement", "typeStatement",
 		"constStatement", "serviceStatement", "gatewayStatement", "backendStatement",
-		"typeDefinition", "type", "list", "fieldType", "field", "assignment",
+		"typeDefinition", "dataType", "list", "fieldType", "field", "assignment",
 		"arg", "call", "attribute", "request", "response", "rpc", "api",
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
@@ -265,7 +265,7 @@ const (
 	tesseractParserRULE_gatewayStatement = 7
 	tesseractParserRULE_backendStatement = 8
 	tesseractParserRULE_typeDefinition   = 9
-	tesseractParserRULE_type             = 10
+	tesseractParserRULE_dataType         = 10
 	tesseractParserRULE_list             = 11
 	tesseractParserRULE_fieldType        = 12
 	tesseractParserRULE_field            = 13
@@ -2622,8 +2622,8 @@ errorExit:
 	goto errorExit // Trick to prevent compiler error if the label is not used
 }
 
-// ITypeContext is an interface to support dynamic dispatch.
-type ITypeContext interface {
+// IDataTypeContext is an interface to support dynamic dispatch.
+type IDataTypeContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
@@ -2640,101 +2640,101 @@ type ITypeContext interface {
 	DATETIME() antlr.TerminalNode
 	UNKNOWN() antlr.TerminalNode
 
-	// IsTypeContext differentiates from other interfaces.
-	IsTypeContext()
+	// IsDataTypeContext differentiates from other interfaces.
+	IsDataTypeContext()
 }
 
-type TypeContext struct {
+type DataTypeContext struct {
 	antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyTypeContext() *TypeContext {
-	var p = new(TypeContext)
+func NewEmptyDataTypeContext() *DataTypeContext {
+	var p = new(DataTypeContext)
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = tesseractParserRULE_type
+	p.RuleIndex = tesseractParserRULE_dataType
 	return p
 }
 
-func InitEmptyTypeContext(p *TypeContext) {
+func InitEmptyDataTypeContext(p *DataTypeContext) {
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, nil, -1)
-	p.RuleIndex = tesseractParserRULE_type
+	p.RuleIndex = tesseractParserRULE_dataType
 }
 
-func (*TypeContext) IsTypeContext() {}
+func (*DataTypeContext) IsDataTypeContext() {}
 
-func NewTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *TypeContext {
-	var p = new(TypeContext)
+func NewDataTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *DataTypeContext {
+	var p = new(DataTypeContext)
 
 	antlr.InitBaseParserRuleContext(&p.BaseParserRuleContext, parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = tesseractParserRULE_type
+	p.RuleIndex = tesseractParserRULE_dataType
 
 	return p
 }
 
-func (s *TypeContext) GetParser() antlr.Parser { return s.parser }
+func (s *DataTypeContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *TypeContext) IDENT() antlr.TerminalNode {
+func (s *DataTypeContext) IDENT() antlr.TerminalNode {
 	return s.GetToken(tesseractParserIDENT, 0)
 }
 
-func (s *TypeContext) INT() antlr.TerminalNode {
+func (s *DataTypeContext) INT() antlr.TerminalNode {
 	return s.GetToken(tesseractParserINT, 0)
 }
 
-func (s *TypeContext) LONG() antlr.TerminalNode {
+func (s *DataTypeContext) LONG() antlr.TerminalNode {
 	return s.GetToken(tesseractParserLONG, 0)
 }
 
-func (s *TypeContext) SHORT() antlr.TerminalNode {
+func (s *DataTypeContext) SHORT() antlr.TerminalNode {
 	return s.GetToken(tesseractParserSHORT, 0)
 }
 
-func (s *TypeContext) BYTE() antlr.TerminalNode {
+func (s *DataTypeContext) BYTE() antlr.TerminalNode {
 	return s.GetToken(tesseractParserBYTE, 0)
 }
 
-func (s *TypeContext) BOOL() antlr.TerminalNode {
+func (s *DataTypeContext) BOOL() antlr.TerminalNode {
 	return s.GetToken(tesseractParserBOOL, 0)
 }
 
-func (s *TypeContext) STRING() antlr.TerminalNode {
+func (s *DataTypeContext) STRING() antlr.TerminalNode {
 	return s.GetToken(tesseractParserSTRING, 0)
 }
 
-func (s *TypeContext) DATETIME() antlr.TerminalNode {
+func (s *DataTypeContext) DATETIME() antlr.TerminalNode {
 	return s.GetToken(tesseractParserDATETIME, 0)
 }
 
-func (s *TypeContext) UNKNOWN() antlr.TerminalNode {
+func (s *DataTypeContext) UNKNOWN() antlr.TerminalNode {
 	return s.GetToken(tesseractParserUNKNOWN, 0)
 }
 
-func (s *TypeContext) GetRuleContext() antlr.RuleContext {
+func (s *DataTypeContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *TypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *DataTypeContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *TypeContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *DataTypeContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(tesseractListener); ok {
-		listenerT.EnterType(s)
+		listenerT.EnterDataType(s)
 	}
 }
 
-func (s *TypeContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *DataTypeContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(tesseractListener); ok {
-		listenerT.ExitType(s)
+		listenerT.ExitDataType(s)
 	}
 }
 
-func (p *tesseractParser) Type_() (localctx ITypeContext) {
-	localctx = NewTypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, tesseractParserRULE_type)
+func (p *tesseractParser) DataType() (localctx IDataTypeContext) {
+	localctx = NewDataTypeContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 20, tesseractParserRULE_dataType)
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
@@ -2771,7 +2771,7 @@ type IListContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	Type_() ITypeContext
+	DataType() IDataTypeContext
 
 	// IsListContext differentiates from other interfaces.
 	IsListContext()
@@ -2809,10 +2809,10 @@ func NewListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokin
 
 func (s *ListContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *ListContext) Type_() ITypeContext {
+func (s *ListContext) DataType() IDataTypeContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ITypeContext); ok {
+		if _, ok := ctx.(IDataTypeContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2822,7 +2822,7 @@ func (s *ListContext) Type_() ITypeContext {
 		return nil
 	}
 
-	return t.(ITypeContext)
+	return t.(IDataTypeContext)
 }
 
 func (s *ListContext) GetRuleContext() antlr.RuleContext {
@@ -2859,7 +2859,7 @@ func (p *tesseractParser) List() (localctx IListContext) {
 	}
 	{
 		p.SetState(170)
-		p.Type_()
+		p.DataType()
 	}
 
 errorExit:
@@ -2883,7 +2883,7 @@ type IFieldTypeContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	Type_() ITypeContext
+	DataType() IDataTypeContext
 	List() IListContext
 
 	// IsFieldTypeContext differentiates from other interfaces.
@@ -2922,10 +2922,10 @@ func NewFieldTypeContext(parser antlr.Parser, parent antlr.ParserRuleContext, in
 
 func (s *FieldTypeContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *FieldTypeContext) Type_() ITypeContext {
+func (s *FieldTypeContext) DataType() IDataTypeContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ITypeContext); ok {
+		if _, ok := ctx.(IDataTypeContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2935,7 +2935,7 @@ func (s *FieldTypeContext) Type_() ITypeContext {
 		return nil
 	}
 
-	return t.(ITypeContext)
+	return t.(IDataTypeContext)
 }
 
 func (s *FieldTypeContext) List() IListContext {
@@ -2988,7 +2988,7 @@ func (p *tesseractParser) FieldType() (localctx IFieldTypeContext) {
 	case tesseractParserINT, tesseractParserLONG, tesseractParserSHORT, tesseractParserBYTE, tesseractParserBOOL, tesseractParserSTRING, tesseractParserDATETIME, tesseractParserUNKNOWN, tesseractParserIDENT:
 		{
 			p.SetState(172)
-			p.Type_()
+			p.DataType()
 		}
 
 	case tesseractParserT__1:

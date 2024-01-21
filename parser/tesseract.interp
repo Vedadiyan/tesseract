@@ -95,7 +95,7 @@ serviceStatement
 gatewayStatement
 backendStatement
 typeDefinition
-type
+dataType
 list
 fieldType
 field

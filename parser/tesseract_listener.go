@@ -38,8 +38,8 @@ type tesseractListener interface {
 	// EnterTypeDefinition is called when entering the typeDefinition production.
 	EnterTypeDefinition(c *TypeDefinitionContext)
 
-	// EnterType is called when entering the type production.
-	EnterType(c *TypeContext)
+	// EnterDataType is called when entering the dataType production.
+	EnterDataType(c *DataTypeContext)
 
 	// EnterList is called when entering the list production.
 	EnterList(c *ListContext)
@@ -104,8 +104,8 @@ type tesseractListener interface {
 	// ExitTypeDefinition is called when exiting the typeDefinition production.
 	ExitTypeDefinition(c *TypeDefinitionContext)
 
-	// ExitType is called when exiting the type production.
-	ExitType(c *TypeContext)
+	// ExitDataType is called when exiting the dataType production.
+	ExitDataType(c *DataTypeContext)
 
 	// ExitList is called when exiting the list production.
 	ExitList(c *ListContext)

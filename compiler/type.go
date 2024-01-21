@@ -78,42 +78,42 @@ func GetField(field parser.IFieldContext) (string, *Field, error) {
 }
 
 func GetFieldType(fieldType parser.IFieldTypeContext) TypeCode {
-	if type_ := fieldType.Type_(); type_ != nil {
-		return GetTypeCode(type_)
+	if dataType := fieldType.DataType(); dataType != nil {
+		return GetTypeCode(dataType)
 	}
 	if list := fieldType.List(); list != nil {
-		typeCode := GetTypeCode(list.Type_())
+		typeCode := GetTypeCode(list.DataType())
 		return 100 + typeCode
 	}
 	return 0
 }
 
-func GetTypeCode(type_ parser.ITypeContext) TypeCode {
-	if intType := type_.INT(); intType != nil {
+func GetTypeCode(dataType parser.IDataTypeContext) TypeCode {
+	if intType := dataType.INT(); intType != nil {
 		return 1
 	}
-	if longType := type_.LONG(); longType != nil {
+	if longType := dataType.LONG(); longType != nil {
 		return 2
 	}
-	if shortType := type_.SHORT(); shortType != nil {
+	if shortType := dataType.SHORT(); shortType != nil {
 		return 3
 	}
-	if byteType := type_.BYTE(); byteType != nil {
+	if byteType := dataType.BYTE(); byteType != nil {
 		return 4
 	}
-	if boolType := type_.BOOL(); boolType != nil {
+	if boolType := dataType.BOOL(); boolType != nil {
 		return 5
 	}
-	if stringType := type_.STRING(); stringType != nil {
+	if stringType := dataType.STRING(); stringType != nil {
 		return 6
 	}
-	if dateTypeType := type_.DATETIME(); dateTypeType != nil {
+	if dateTypeType := dataType.DATETIME(); dateTypeType != nil {
 		return 7
 	}
-	if unknownType := type_.UNKNOWN(); unknownType != nil {
+	if unknownType := dataType.UNKNOWN(); unknownType != nil {
 		return 8
 	}
-	if referenceType := type_.IDENT(); referenceType != nil {
+	if referenceType := dataType.IDENT(); referenceType != nil {
 		return 9
 	}
 	return 0

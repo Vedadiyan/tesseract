@@ -15,9 +15,9 @@ backendStatement: attribute* BACKEND LP (IDENT EQ GT call) RP;
 
 typeDefinition : attribute* IDENT LCB field (',' field)* RCB;
 
-type : IDENT | INT | LONG | SHORT | BYTE | BOOL | STRING | DATETIME | UNKNOWN;
-list: '[]'type;
-fieldType: (type | list);
+dataType : IDENT | INT | LONG | SHORT | BYTE | BOOL | STRING | DATETIME | UNKNOWN;
+list: '[]'dataType;
+fieldType: (dataType | list);
 field: (attribute)* IDENT fieldType;
 assignment: IDENT EQ (EscapedString | NUMBER| | IDENT | call);
 arg:  NUMBER | EscapedString | IDENT | DATA | call;
