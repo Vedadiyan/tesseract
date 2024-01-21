@@ -8,7 +8,11 @@ import (
 )
 
 type (
-	Arg        any
+	Arg  any
+	Call struct {
+		Name string
+		Args []Arg
+	}
 	Reference  string
 	TypeCode   int
 	Attributes map[string][]Arg
@@ -43,34 +47,11 @@ func NewAttributes(attributeStatements []parser.IAttributeContext) (Attributes, 
 	for _, attribute := range attributeStatements {
 		call := attribute.Call()
 		name := call.IDENT().GetText()
-		attributes[name] = make([]Arg, 0)
-		for _, arg := range call.AllArg() {
-			if assignment := arg.Assignment(); assignment != nil {
-				continue
-			}
-			if call := arg.Call(); call != nil {
-				continue
-			}
-			if str := arg.EscapedString(); str != nil {
-				attributes[name] = append(attributes[name], str.GetText())
-				continue
-			}
-			if number := arg.NUMBER(); number != nil {
-				n, err := strconv.ParseFloat(number.GetText(), 64)
-				if err != nil {
-					return nil, err
-				}
-				attributes[name] = append(attributes[name], n)
-				continue
-			}
-			if ident := arg.IDENT(); ident != nil {
-				attributes[name] = append(attributes[name], Reference(ident.GetText()))
-				continue
-			}
-			if data := arg.DATA(); data != nil {
-				return nil, fmt.Errorf("$data is not valid in attributes")
-			}
+		args, err := GetArgs(call.AllArg())
+		if err != nil {
+			return nil, err
 		}
+		attributes[name] = args
 	}
 	return attributes, nil
 }
@@ -128,4 +109,42 @@ func GetTypeCode(type_ parser.ITypeContext) TypeCode {
 		return 9
 	}
 	return 0
+}
+
+func GetArg(arg parser.IArgContext) (Arg, error) {
+	if call := arg.Call(); call != nil {
+		args, err := GetArgs(call.AllArg())
+		if err != nil {
+			return nil, err
+		}
+		return &Call{
+			Name: call.GetText(),
+			Args: args,
+		}, nil
+	}
+	if str := arg.EscapedString(); str != nil {
+		return str.GetText(), nil
+	}
+	if number := arg.NUMBER(); number != nil {
+		return strconv.ParseFloat(number.GetText(), 64)
+	}
+	if ident := arg.IDENT(); ident != nil {
+		return Reference(ident.GetText()), nil
+	}
+	if data := arg.DATA(); data != nil {
+		return nil, fmt.Errorf("$data is not valid in attributes")
+	}
+	return nil, fmt.Errorf("invalid argument")
+}
+
+func GetArgs(args []parser.IArgContext) ([]Arg, error) {
+	arguments := make([]Arg, 0)
+	for _, arg := range args {
+		argument, err := GetArg(arg)
+		if err != nil {
+			return nil, err
+		}
+		arguments = append(arguments, argument)
+	}
+	return arguments, nil
 }

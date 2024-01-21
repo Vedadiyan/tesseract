@@ -18,7 +18,7 @@ list: '[]'type;
 fieldType: (type | list);
 field: (attribute)* IDENT fieldType;
 assignment: IDENT EQ (EscapedString | NUMBER| | IDENT | call);
-arg: (assignment | NUMBER | EscapedString | IDENT | DATA | call);
+arg:  NUMBER | EscapedString | IDENT | DATA | call;
 call:  IDENT LP arg* (',' arg)* RP;
 attribute: AT call;
 request: attribute* IDENT;
