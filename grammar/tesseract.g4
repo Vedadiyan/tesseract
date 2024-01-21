@@ -7,11 +7,13 @@ program: packageStatement (importStatement | useStatement | typeStatement | cons
 importStatement: IMPORT EscapedString SEMI;
 useStatement: USE IDENT SEMI;
 packageStatement: PACKAGE IDENT SEMI;
-typeStatement: attribute* TYPE LP (attribute* IDENT LCB field (',' field)* RCB)* RP SEMI*;
+typeStatement: attribute* TYPE LP typeDefinition* RP SEMI*;
 constStatement: CONST LP (IDENT EQ (EscapedString | NUMBER))* RP; 
 serviceStatement: attribute* SERVICE LP rpc* RP;
 gatewayStatement: attribute* GATEWAY LP api* RP;
 backendStatement: attribute* BACKEND LP (IDENT EQ GT call) RP;
+
+typeDefinition : attribute* IDENT LCB field (',' field)* RCB;
 
 type : IDENT | INT | LONG | SHORT | BYTE | BOOL | STRING | DATETIME | UNKNOWN;
 list: '[]'type;

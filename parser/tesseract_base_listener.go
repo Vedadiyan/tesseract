@@ -75,6 +75,12 @@ func (s *BasetesseractListener) EnterBackendStatement(ctx *BackendStatementConte
 // ExitBackendStatement is called when production backendStatement is exited.
 func (s *BasetesseractListener) ExitBackendStatement(ctx *BackendStatementContext) {}
 
+// EnterTypeDefinition is called when production typeDefinition is entered.
+func (s *BasetesseractListener) EnterTypeDefinition(ctx *TypeDefinitionContext) {}
+
+// ExitTypeDefinition is called when production typeDefinition is exited.
+func (s *BasetesseractListener) ExitTypeDefinition(ctx *TypeDefinitionContext) {}
+
 // EnterType is called when production type is entered.
 func (s *BasetesseractListener) EnterType(ctx *TypeContext) {}
 

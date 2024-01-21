@@ -22,7 +22,7 @@ type (
 	}
 	Type struct {
 		Attributes  Attributes
-		Fields      map[string]Field
+		Fields      map[string]*Field
 		PackageName string
 	}
 	KeyValue struct {
@@ -31,18 +31,26 @@ type (
 	}
 )
 
-func NewType(packageName string, typeStatement parser.ITypeStatementContext) (*Type, error) {
-	attributes, err := NewAttributes(typeStatement.AllAttribute())
+func GetType(packageName string, typeDefinition parser.ITypeDefinitionContext) (*Type, error) {
+	attributes, err := GetAttributes(typeDefinition.AllAttribute())
 	if err != nil {
 		return nil, err
 	}
-
+	fields := make(map[string]*Field)
+	for _, field := range typeDefinition.AllField() {
+		name, value, err := GetField(field)
+		if err != nil {
+			return nil, err
+		}
+		fields[name] = value
+	}
 	return &Type{
 		Attributes: attributes,
+		Fields:     fields,
 	}, nil
 }
 
-func NewAttributes(attributeStatements []parser.IAttributeContext) (Attributes, error) {
+func GetAttributes(attributeStatements []parser.IAttributeContext) (Attributes, error) {
 	attributes := make(Attributes)
 	for _, attribute := range attributeStatements {
 		call := attribute.Call()
@@ -56,8 +64,8 @@ func NewAttributes(attributeStatements []parser.IAttributeContext) (Attributes, 
 	return attributes, nil
 }
 
-func NewField(field parser.IFieldContext) (string, *Field, error) {
-	attributes, err := NewAttributes(field.AllAttribute())
+func GetField(field parser.IFieldContext) (string, *Field, error) {
+	attributes, err := GetAttributes(field.AllAttribute())
 	if err != nil {
 		return "", nil, err
 	}

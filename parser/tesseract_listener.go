@@ -35,6 +35,9 @@ type tesseractListener interface {
 	// EnterBackendStatement is called when entering the backendStatement production.
 	EnterBackendStatement(c *BackendStatementContext)
 
+	// EnterTypeDefinition is called when entering the typeDefinition production.
+	EnterTypeDefinition(c *TypeDefinitionContext)
+
 	// EnterType is called when entering the type production.
 	EnterType(c *TypeContext)
 
@@ -97,6 +100,9 @@ type tesseractListener interface {
 
 	// ExitBackendStatement is called when exiting the backendStatement production.
 	ExitBackendStatement(c *BackendStatementContext)
+
+	// ExitTypeDefinition is called when exiting the typeDefinition production.
+	ExitTypeDefinition(c *TypeDefinitionContext)
 
 	// ExitType is called when exiting the type production.
 	ExitType(c *TypeContext)
