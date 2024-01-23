@@ -5,6 +5,7 @@ import (
 	_ "embed"
 	"fmt"
 	"strconv"
+	"strings"
 	"text/template"
 
 	"github.com/vedadiyan/tesseract/parser"
@@ -105,7 +106,7 @@ func GetType(packageName string, typeDefinition parser.ITypeDefinitionContext) (
 	}
 	fields := make(map[string]*Field)
 	for index, field := range typeDefinition.AllField() {
-		name, value, err := GetField(index, field)
+		name, value, err := GetField(index+1, field)
 		if err != nil {
 			return nil, err
 		}
@@ -152,7 +153,7 @@ func GetFieldType(fieldType parser.IFieldTypeContext) (TypeCode, string) {
 	}
 	if list := fieldType.List(); list != nil {
 		typeCode, typeName := GetTypeCode(list.DataType())
-		return 100 + typeCode, fmt.Sprintf("repated %s", typeName)
+		return 100 + typeCode, fmt.Sprintf("repeated %s", typeName)
 	}
 	return 0, ""
 }
@@ -200,7 +201,7 @@ func GetArg(arg parser.IArgContext) (Arg, error) {
 		}, nil
 	}
 	if str := arg.EscapedString(); str != nil {
-		return str.GetText(), nil
+		return strings.TrimSuffix(strings.TrimPrefix(str.GetText(), "\""), "\""), nil
 	}
 	if number := arg.NUMBER(); number != nil {
 		return strconv.ParseFloat(number.GetText(), 64)

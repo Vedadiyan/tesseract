@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/antlr4-go/antlr/v4"
 	"github.com/vedadiyan/tesseract/compiler"
@@ -74,5 +75,6 @@ func main() {
 	x, err := compiler.CompilerTypes("test", p.AllTypeStatement())
 	_ = x
 	_ = err
+	os.WriteFile("test.proto", []byte(x), os.ModePerm)
 	//	_ = name
 }
