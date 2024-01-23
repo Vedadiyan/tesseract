@@ -71,7 +71,7 @@ func main() {
 	test.AddErrorListener(&customErrorListener{})
 	//	name := test.PackageStatement().IDENT().GetText()
 	p := test.Program()
-	x, err := compiler.GetType("", p.AllTypeStatement()[0].AllTypeDefinition()[0])
+	x, err := compiler.CompilerTypes("test", p.AllTypeStatement())
 	_ = x
 	_ = err
 	//	_ = name

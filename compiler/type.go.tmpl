@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package {{ .PackageName }};
+
+option go_package = "pb/{{ .PackageName }}";
+
+{{- range $name, $type := .Types }}
+message {{ $name }} {
+    {{- range $fieldName, $field := $type.Fields}}
+    {{ $field.TypeName }} {{ $fieldName }} = {{ $field.Index }} {{- range $attributeName, $attribute := $field.Attributes}} {{- if eq $attributeName "JSON"}} [json_name="{{ (index $attribute 0) }}"] {{ end }} {{ end}}; 
+    {{- end}}
+}
+{{- end }}
+

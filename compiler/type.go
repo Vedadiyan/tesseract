@@ -1,8 +1,11 @@
 package compiler
 
 import (
+	"bytes"
+	_ "embed"
 	"fmt"
 	"strconv"
+	"text/template"
 
 	"github.com/vedadiyan/tesseract/parser"
 )
@@ -18,7 +21,9 @@ type (
 	Attributes map[string][]Arg
 	Field      struct {
 		TypeCode   TypeCode
+		TypeName   string
 		Attributes Attributes
+		Index      int
 	}
 	Type struct {
 		Attributes  Attributes
@@ -54,14 +59,53 @@ const (
 	LIST_OF_TYPE
 )
 
+var (
+	//go:embed type.go.tmpl
+	_typeTemplate string
+)
+
+func CompilerTypes(packageName string, typeStatements []parser.ITypeStatementContext) (string, error) {
+	types, err := GetTypes(packageName, typeStatements)
+	if err != nil {
+		return "", err
+	}
+	template, err := template.New("types").Parse(_typeTemplate)
+	if err != nil {
+		return "", err
+	}
+	output := bytes.NewBufferString("")
+	err = template.Execute(output, struct {
+		PackageName string
+		Types       map[string]*Type
+	}{PackageName: packageName, Types: types})
+	if err != nil {
+		return "", err
+	}
+	return output.String(), nil
+}
+
+func GetTypes(packageName string, typeStatements []parser.ITypeStatementContext) (map[string]*Type, error) {
+	types := make(map[string]*Type)
+	for _, typeStatement := range typeStatements {
+		for _, typeDefinition := range typeStatement.AllTypeDefinition() {
+			_type, err := GetType(packageName, typeDefinition)
+			if err != nil {
+				return nil, err
+			}
+			types[typeDefinition.IDENT().GetText()] = _type
+		}
+	}
+	return types, nil
+}
+
 func GetType(packageName string, typeDefinition parser.ITypeDefinitionContext) (*Type, error) {
 	attributes, err := GetAttributes(typeDefinition.AllAttribute())
 	if err != nil {
 		return nil, err
 	}
 	fields := make(map[string]*Field)
-	for _, field := range typeDefinition.AllField() {
-		name, value, err := GetField(field)
+	for index, field := range typeDefinition.AllField() {
+		name, value, err := GetField(index, field)
 		if err != nil {
 			return nil, err
 		}
@@ -87,59 +131,61 @@ func GetAttributes(attributeStatements []parser.IAttributeContext) (Attributes, 
 	return attributes, nil
 }
 
-func GetField(field parser.IFieldContext) (string, *Field, error) {
+func GetField(index int, field parser.IFieldContext) (string, *Field, error) {
 	attributes, err := GetAttributes(field.AllAttribute())
 	if err != nil {
 		return "", nil, err
 	}
-	typeCode := GetFieldType(field.FieldType())
+	typeCode, typename := GetFieldType(field.FieldType())
 
 	return field.IDENT().GetText(), &Field{
 		Attributes: attributes,
 		TypeCode:   typeCode,
+		TypeName:   typename,
+		Index:      index,
 	}, nil
 }
 
-func GetFieldType(fieldType parser.IFieldTypeContext) TypeCode {
+func GetFieldType(fieldType parser.IFieldTypeContext) (TypeCode, string) {
 	if dataType := fieldType.DataType(); dataType != nil {
 		return GetTypeCode(dataType)
 	}
 	if list := fieldType.List(); list != nil {
-		typeCode := GetTypeCode(list.DataType())
-		return 100 + typeCode
+		typeCode, typeName := GetTypeCode(list.DataType())
+		return 100 + typeCode, fmt.Sprintf("repated %s", typeName)
 	}
-	return 0
+	return 0, ""
 }
 
-func GetTypeCode(dataType parser.IDataTypeContext) TypeCode {
+func GetTypeCode(dataType parser.IDataTypeContext) (TypeCode, string) {
 	if intType := dataType.INT(); intType != nil {
-		return INT
+		return INT, "int32"
 	}
 	if longType := dataType.LONG(); longType != nil {
-		return LONG
+		return LONG, "int64"
 	}
 	if shortType := dataType.SHORT(); shortType != nil {
-		return SHORT
+		return SHORT, "int32"
 	}
 	if byteType := dataType.BYTE(); byteType != nil {
-		return BYTE
+		return BYTE, "int32"
 	}
 	if boolType := dataType.BOOL(); boolType != nil {
-		return BOOL
+		return BOOL, "bool"
 	}
 	if stringType := dataType.STRING(); stringType != nil {
-		return STRING
+		return STRING, "string"
 	}
 	if dateTypeType := dataType.DATETIME(); dateTypeType != nil {
-		return DATETIME
+		return DATETIME, "string"
 	}
 	if unknownType := dataType.UNKNOWN(); unknownType != nil {
-		return UNKNOWN
+		return UNKNOWN, "Struct"
 	}
 	if referenceType := dataType.IDENT(); referenceType != nil {
-		return TYPE
+		return TYPE, referenceType.GetText()
 	}
-	return NONE
+	return NONE, ""
 }
 
 func GetArg(arg parser.IArgContext) (Arg, error) {
