@@ -33,7 +33,7 @@ var TesseractParserStaticData struct {
 func tesseractParserInit() {
 	staticData := &TesseractParserStaticData
 	staticData.LiteralNames = []string{
-		"", "','", "'[]'", "", "'import'", "'use'", "'package'", "'type'", "'const'",
+		"", "'[]'", "','", "", "'import'", "'use'", "'package'", "'type'", "'const'",
 		"'service'", "'gateway'", "'backend'", "'int'", "'int64'", "'int16'",
 		"'byte'", "'bool'", "'string'", "'time'", "'struct'", "'get'", "'post'",
 		"'put'", "'patch'", "'delete'", "'$data'", "'='", "':'", "'\"'", "'>'",
@@ -54,7 +54,7 @@ func tesseractParserInit() {
 	}
 	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 40, 275, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 40, 274, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
 		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
 		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 2, 19, 7, 19, 2, 20, 7, 20, 2,
@@ -69,28 +69,28 @@ func tesseractParserInit() {
 		1, 7, 1, 7, 5, 7, 128, 8, 7, 10, 7, 12, 7, 131, 9, 7, 1, 7, 1, 7, 1, 8,
 		5, 8, 136, 8, 8, 10, 8, 12, 8, 139, 9, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8,
 		1, 8, 1, 8, 1, 8, 1, 8, 1, 9, 5, 9, 151, 8, 9, 10, 9, 12, 9, 154, 9, 9,
-		1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 5, 9, 161, 8, 9, 10, 9, 12, 9, 164, 9, 9,
-		1, 9, 1, 9, 1, 10, 1, 10, 1, 11, 1, 11, 1, 11, 1, 12, 1, 12, 3, 12, 175,
-		8, 12, 1, 13, 5, 13, 178, 8, 13, 10, 13, 12, 13, 181, 9, 13, 1, 13, 1,
-		13, 1, 13, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 3, 14, 193,
-		8, 14, 1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 3, 15, 200, 8, 15, 1, 16, 1,
-		16, 1, 16, 5, 16, 205, 8, 16, 10, 16, 12, 16, 208, 9, 16, 1, 16, 1, 16,
-		5, 16, 212, 8, 16, 10, 16, 12, 16, 215, 9, 16, 1, 16, 1, 16, 1, 17, 1,
-		17, 1, 17, 1, 18, 5, 18, 223, 8, 18, 10, 18, 12, 18, 226, 9, 18, 1, 18,
-		1, 18, 1, 19, 5, 19, 231, 8, 19, 10, 19, 12, 19, 234, 9, 19, 1, 19, 1,
-		19, 1, 20, 5, 20, 239, 8, 20, 10, 20, 12, 20, 242, 9, 20, 1, 20, 1, 20,
-		1, 20, 1, 20, 1, 20, 1, 20, 1, 20, 1, 21, 5, 21, 252, 8, 21, 10, 21, 12,
-		21, 255, 9, 21, 1, 21, 1, 21, 1, 21, 1, 21, 5, 21, 261, 8, 21, 10, 21,
-		12, 21, 264, 9, 21, 1, 21, 1, 21, 5, 21, 268, 8, 21, 10, 21, 12, 21, 271,
-		9, 21, 1, 21, 1, 21, 1, 21, 0, 0, 22, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18,
-		20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 0, 3, 2, 0, 3, 3, 38, 38,
-		2, 0, 12, 19, 37, 37, 1, 0, 20, 24, 288, 0, 44, 1, 0, 0, 0, 2, 57, 1, 0,
-		0, 0, 4, 61, 1, 0, 0, 0, 6, 65, 1, 0, 0, 0, 8, 72, 1, 0, 0, 0, 10, 90,
-		1, 0, 0, 0, 12, 105, 1, 0, 0, 0, 14, 121, 1, 0, 0, 0, 16, 137, 1, 0, 0,
-		0, 18, 152, 1, 0, 0, 0, 20, 167, 1, 0, 0, 0, 22, 169, 1, 0, 0, 0, 24, 174,
-		1, 0, 0, 0, 26, 179, 1, 0, 0, 0, 28, 185, 1, 0, 0, 0, 30, 199, 1, 0, 0,
-		0, 32, 201, 1, 0, 0, 0, 34, 218, 1, 0, 0, 0, 36, 224, 1, 0, 0, 0, 38, 232,
-		1, 0, 0, 0, 40, 240, 1, 0, 0, 0, 42, 253, 1, 0, 0, 0, 44, 54, 3, 6, 3,
+		1, 9, 1, 9, 1, 9, 1, 9, 5, 9, 160, 8, 9, 10, 9, 12, 9, 163, 9, 9, 1, 9,
+		1, 9, 1, 10, 1, 10, 1, 11, 1, 11, 1, 11, 1, 12, 1, 12, 3, 12, 174, 8, 12,
+		1, 13, 5, 13, 177, 8, 13, 10, 13, 12, 13, 180, 9, 13, 1, 13, 1, 13, 1,
+		13, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 1, 14, 3, 14, 192, 8, 14,
+		1, 15, 1, 15, 1, 15, 1, 15, 1, 15, 3, 15, 199, 8, 15, 1, 16, 1, 16, 1,
+		16, 5, 16, 204, 8, 16, 10, 16, 12, 16, 207, 9, 16, 1, 16, 1, 16, 5, 16,
+		211, 8, 16, 10, 16, 12, 16, 214, 9, 16, 1, 16, 1, 16, 1, 17, 1, 17, 1,
+		17, 1, 18, 5, 18, 222, 8, 18, 10, 18, 12, 18, 225, 9, 18, 1, 18, 1, 18,
+		1, 19, 5, 19, 230, 8, 19, 10, 19, 12, 19, 233, 9, 19, 1, 19, 1, 19, 1,
+		20, 5, 20, 238, 8, 20, 10, 20, 12, 20, 241, 9, 20, 1, 20, 1, 20, 1, 20,
+		1, 20, 1, 20, 1, 20, 1, 20, 1, 21, 5, 21, 251, 8, 21, 10, 21, 12, 21, 254,
+		9, 21, 1, 21, 1, 21, 1, 21, 1, 21, 5, 21, 260, 8, 21, 10, 21, 12, 21, 263,
+		9, 21, 1, 21, 1, 21, 5, 21, 267, 8, 21, 10, 21, 12, 21, 270, 9, 21, 1,
+		21, 1, 21, 1, 21, 0, 0, 22, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22,
+		24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 0, 3, 2, 0, 3, 3, 38, 38, 2, 0,
+		12, 19, 37, 37, 1, 0, 20, 24, 287, 0, 44, 1, 0, 0, 0, 2, 57, 1, 0, 0, 0,
+		4, 61, 1, 0, 0, 0, 6, 65, 1, 0, 0, 0, 8, 72, 1, 0, 0, 0, 10, 90, 1, 0,
+		0, 0, 12, 105, 1, 0, 0, 0, 14, 121, 1, 0, 0, 0, 16, 137, 1, 0, 0, 0, 18,
+		152, 1, 0, 0, 0, 20, 166, 1, 0, 0, 0, 22, 168, 1, 0, 0, 0, 24, 173, 1,
+		0, 0, 0, 26, 178, 1, 0, 0, 0, 28, 184, 1, 0, 0, 0, 30, 198, 1, 0, 0, 0,
+		32, 200, 1, 0, 0, 0, 34, 217, 1, 0, 0, 0, 36, 223, 1, 0, 0, 0, 38, 231,
+		1, 0, 0, 0, 40, 239, 1, 0, 0, 0, 42, 252, 1, 0, 0, 0, 44, 54, 3, 6, 3,
 		0, 45, 53, 3, 2, 1, 0, 46, 53, 3, 4, 2, 0, 47, 53, 3, 8, 4, 0, 48, 53,
 		3, 10, 5, 0, 49, 53, 3, 12, 6, 0, 50, 53, 3, 16, 8, 0, 51, 53, 3, 14, 7,
 		0, 52, 45, 1, 0, 0, 0, 52, 46, 1, 0, 0, 0, 52, 47, 1, 0, 0, 0, 52, 48,
@@ -129,50 +129,50 @@ func tesseractParserInit() {
 		17, 1, 0, 0, 0, 149, 151, 3, 34, 17, 0, 150, 149, 1, 0, 0, 0, 151, 154,
 		1, 0, 0, 0, 152, 150, 1, 0, 0, 0, 152, 153, 1, 0, 0, 0, 153, 155, 1, 0,
 		0, 0, 154, 152, 1, 0, 0, 0, 155, 156, 5, 37, 0, 0, 156, 157, 5, 33, 0,
-		0, 157, 162, 3, 26, 13, 0, 158, 159, 5, 1, 0, 0, 159, 161, 3, 26, 13, 0,
-		160, 158, 1, 0, 0, 0, 161, 164, 1, 0, 0, 0, 162, 160, 1, 0, 0, 0, 162,
-		163, 1, 0, 0, 0, 163, 165, 1, 0, 0, 0, 164, 162, 1, 0, 0, 0, 165, 166,
-		5, 34, 0, 0, 166, 19, 1, 0, 0, 0, 167, 168, 7, 1, 0, 0, 168, 21, 1, 0,
-		0, 0, 169, 170, 5, 2, 0, 0, 170, 171, 3, 20, 10, 0, 171, 23, 1, 0, 0, 0,
-		172, 175, 3, 20, 10, 0, 173, 175, 3, 22, 11, 0, 174, 172, 1, 0, 0, 0, 174,
-		173, 1, 0, 0, 0, 175, 25, 1, 0, 0, 0, 176, 178, 3, 34, 17, 0, 177, 176,
-		1, 0, 0, 0, 178, 181, 1, 0, 0, 0, 179, 177, 1, 0, 0, 0, 179, 180, 1, 0,
-		0, 0, 180, 182, 1, 0, 0, 0, 181, 179, 1, 0, 0, 0, 182, 183, 5, 37, 0, 0,
-		183, 184, 3, 24, 12, 0, 184, 27, 1, 0, 0, 0, 185, 186, 5, 37, 0, 0, 186,
-		192, 5, 26, 0, 0, 187, 193, 5, 3, 0, 0, 188, 193, 5, 38, 0, 0, 189, 193,
-		1, 0, 0, 0, 190, 193, 5, 37, 0, 0, 191, 193, 3, 32, 16, 0, 192, 187, 1,
-		0, 0, 0, 192, 188, 1, 0, 0, 0, 192, 189, 1, 0, 0, 0, 192, 190, 1, 0, 0,
-		0, 192, 191, 1, 0, 0, 0, 193, 29, 1, 0, 0, 0, 194, 200, 5, 38, 0, 0, 195,
-		200, 5, 3, 0, 0, 196, 200, 5, 37, 0, 0, 197, 200, 5, 25, 0, 0, 198, 200,
-		3, 32, 16, 0, 199, 194, 1, 0, 0, 0, 199, 195, 1, 0, 0, 0, 199, 196, 1,
-		0, 0, 0, 199, 197, 1, 0, 0, 0, 199, 198, 1, 0, 0, 0, 200, 31, 1, 0, 0,
-		0, 201, 202, 5, 37, 0, 0, 202, 206, 5, 31, 0, 0, 203, 205, 3, 30, 15, 0,
-		204, 203, 1, 0, 0, 0, 205, 208, 1, 0, 0, 0, 206, 204, 1, 0, 0, 0, 206,
-		207, 1, 0, 0, 0, 207, 213, 1, 0, 0, 0, 208, 206, 1, 0, 0, 0, 209, 210,
-		5, 1, 0, 0, 210, 212, 3, 30, 15, 0, 211, 209, 1, 0, 0, 0, 212, 215, 1,
-		0, 0, 0, 213, 211, 1, 0, 0, 0, 213, 214, 1, 0, 0, 0, 214, 216, 1, 0, 0,
-		0, 215, 213, 1, 0, 0, 0, 216, 217, 5, 32, 0, 0, 217, 33, 1, 0, 0, 0, 218,
-		219, 5, 36, 0, 0, 219, 220, 3, 32, 16, 0, 220, 35, 1, 0, 0, 0, 221, 223,
-		3, 34, 17, 0, 222, 221, 1, 0, 0, 0, 223, 226, 1, 0, 0, 0, 224, 222, 1,
-		0, 0, 0, 224, 225, 1, 0, 0, 0, 225, 227, 1, 0, 0, 0, 226, 224, 1, 0, 0,
-		0, 227, 228, 5, 37, 0, 0, 228, 37, 1, 0, 0, 0, 229, 231, 3, 34, 17, 0,
-		230, 229, 1, 0, 0, 0, 231, 234, 1, 0, 0, 0, 232, 230, 1, 0, 0, 0, 232,
-		233, 1, 0, 0, 0, 233, 235, 1, 0, 0, 0, 234, 232, 1, 0, 0, 0, 235, 236,
-		5, 37, 0, 0, 236, 39, 1, 0, 0, 0, 237, 239, 3, 34, 17, 0, 238, 237, 1,
-		0, 0, 0, 239, 242, 1, 0, 0, 0, 240, 238, 1, 0, 0, 0, 240, 241, 1, 0, 0,
-		0, 241, 243, 1, 0, 0, 0, 242, 240, 1, 0, 0, 0, 243, 244, 5, 37, 0, 0, 244,
-		245, 5, 31, 0, 0, 245, 246, 3, 36, 18, 0, 246, 247, 5, 32, 0, 0, 247, 248,
-		3, 38, 19, 0, 248, 249, 5, 35, 0, 0, 249, 41, 1, 0, 0, 0, 250, 252, 3,
-		34, 17, 0, 251, 250, 1, 0, 0, 0, 252, 255, 1, 0, 0, 0, 253, 251, 1, 0,
-		0, 0, 253, 254, 1, 0, 0, 0, 254, 256, 1, 0, 0, 0, 255, 253, 1, 0, 0, 0,
-		256, 257, 7, 2, 0, 0, 257, 258, 5, 37, 0, 0, 258, 262, 5, 31, 0, 0, 259,
-		261, 3, 36, 18, 0, 260, 259, 1, 0, 0, 0, 261, 264, 1, 0, 0, 0, 262, 260,
-		1, 0, 0, 0, 262, 263, 1, 0, 0, 0, 263, 265, 1, 0, 0, 0, 264, 262, 1, 0,
-		0, 0, 265, 269, 5, 32, 0, 0, 266, 268, 3, 38, 19, 0, 267, 266, 1, 0, 0,
-		0, 268, 271, 1, 0, 0, 0, 269, 267, 1, 0, 0, 0, 269, 270, 1, 0, 0, 0, 270,
-		272, 1, 0, 0, 0, 271, 269, 1, 0, 0, 0, 272, 273, 5, 35, 0, 0, 273, 43,
-		1, 0, 0, 0, 25, 52, 54, 72, 80, 87, 97, 105, 113, 121, 129, 137, 152, 162,
-		174, 179, 192, 199, 206, 213, 224, 232, 240, 253, 262, 269,
+		0, 157, 161, 3, 26, 13, 0, 158, 160, 3, 26, 13, 0, 159, 158, 1, 0, 0, 0,
+		160, 163, 1, 0, 0, 0, 161, 159, 1, 0, 0, 0, 161, 162, 1, 0, 0, 0, 162,
+		164, 1, 0, 0, 0, 163, 161, 1, 0, 0, 0, 164, 165, 5, 34, 0, 0, 165, 19,
+		1, 0, 0, 0, 166, 167, 7, 1, 0, 0, 167, 21, 1, 0, 0, 0, 168, 169, 5, 1,
+		0, 0, 169, 170, 3, 20, 10, 0, 170, 23, 1, 0, 0, 0, 171, 174, 3, 20, 10,
+		0, 172, 174, 3, 22, 11, 0, 173, 171, 1, 0, 0, 0, 173, 172, 1, 0, 0, 0,
+		174, 25, 1, 0, 0, 0, 175, 177, 3, 34, 17, 0, 176, 175, 1, 0, 0, 0, 177,
+		180, 1, 0, 0, 0, 178, 176, 1, 0, 0, 0, 178, 179, 1, 0, 0, 0, 179, 181,
+		1, 0, 0, 0, 180, 178, 1, 0, 0, 0, 181, 182, 5, 37, 0, 0, 182, 183, 3, 24,
+		12, 0, 183, 27, 1, 0, 0, 0, 184, 185, 5, 37, 0, 0, 185, 191, 5, 26, 0,
+		0, 186, 192, 5, 3, 0, 0, 187, 192, 5, 38, 0, 0, 188, 192, 1, 0, 0, 0, 189,
+		192, 5, 37, 0, 0, 190, 192, 3, 32, 16, 0, 191, 186, 1, 0, 0, 0, 191, 187,
+		1, 0, 0, 0, 191, 188, 1, 0, 0, 0, 191, 189, 1, 0, 0, 0, 191, 190, 1, 0,
+		0, 0, 192, 29, 1, 0, 0, 0, 193, 199, 5, 38, 0, 0, 194, 199, 5, 3, 0, 0,
+		195, 199, 5, 37, 0, 0, 196, 199, 5, 25, 0, 0, 197, 199, 3, 32, 16, 0, 198,
+		193, 1, 0, 0, 0, 198, 194, 1, 0, 0, 0, 198, 195, 1, 0, 0, 0, 198, 196,
+		1, 0, 0, 0, 198, 197, 1, 0, 0, 0, 199, 31, 1, 0, 0, 0, 200, 201, 5, 37,
+		0, 0, 201, 205, 5, 31, 0, 0, 202, 204, 3, 30, 15, 0, 203, 202, 1, 0, 0,
+		0, 204, 207, 1, 0, 0, 0, 205, 203, 1, 0, 0, 0, 205, 206, 1, 0, 0, 0, 206,
+		212, 1, 0, 0, 0, 207, 205, 1, 0, 0, 0, 208, 209, 5, 2, 0, 0, 209, 211,
+		3, 30, 15, 0, 210, 208, 1, 0, 0, 0, 211, 214, 1, 0, 0, 0, 212, 210, 1,
+		0, 0, 0, 212, 213, 1, 0, 0, 0, 213, 215, 1, 0, 0, 0, 214, 212, 1, 0, 0,
+		0, 215, 216, 5, 32, 0, 0, 216, 33, 1, 0, 0, 0, 217, 218, 5, 36, 0, 0, 218,
+		219, 3, 32, 16, 0, 219, 35, 1, 0, 0, 0, 220, 222, 3, 34, 17, 0, 221, 220,
+		1, 0, 0, 0, 222, 225, 1, 0, 0, 0, 223, 221, 1, 0, 0, 0, 223, 224, 1, 0,
+		0, 0, 224, 226, 1, 0, 0, 0, 225, 223, 1, 0, 0, 0, 226, 227, 5, 37, 0, 0,
+		227, 37, 1, 0, 0, 0, 228, 230, 3, 34, 17, 0, 229, 228, 1, 0, 0, 0, 230,
+		233, 1, 0, 0, 0, 231, 229, 1, 0, 0, 0, 231, 232, 1, 0, 0, 0, 232, 234,
+		1, 0, 0, 0, 233, 231, 1, 0, 0, 0, 234, 235, 5, 37, 0, 0, 235, 39, 1, 0,
+		0, 0, 236, 238, 3, 34, 17, 0, 237, 236, 1, 0, 0, 0, 238, 241, 1, 0, 0,
+		0, 239, 237, 1, 0, 0, 0, 239, 240, 1, 0, 0, 0, 240, 242, 1, 0, 0, 0, 241,
+		239, 1, 0, 0, 0, 242, 243, 5, 37, 0, 0, 243, 244, 5, 31, 0, 0, 244, 245,
+		3, 36, 18, 0, 245, 246, 5, 32, 0, 0, 246, 247, 3, 38, 19, 0, 247, 248,
+		5, 35, 0, 0, 248, 41, 1, 0, 0, 0, 249, 251, 3, 34, 17, 0, 250, 249, 1,
+		0, 0, 0, 251, 254, 1, 0, 0, 0, 252, 250, 1, 0, 0, 0, 252, 253, 1, 0, 0,
+		0, 253, 255, 1, 0, 0, 0, 254, 252, 1, 0, 0, 0, 255, 256, 7, 2, 0, 0, 256,
+		257, 5, 37, 0, 0, 257, 261, 5, 31, 0, 0, 258, 260, 3, 36, 18, 0, 259, 258,
+		1, 0, 0, 0, 260, 263, 1, 0, 0, 0, 261, 259, 1, 0, 0, 0, 261, 262, 1, 0,
+		0, 0, 262, 264, 1, 0, 0, 0, 263, 261, 1, 0, 0, 0, 264, 268, 5, 32, 0, 0,
+		265, 267, 3, 38, 19, 0, 266, 265, 1, 0, 0, 0, 267, 270, 1, 0, 0, 0, 268,
+		266, 1, 0, 0, 0, 268, 269, 1, 0, 0, 0, 269, 271, 1, 0, 0, 0, 270, 268,
+		1, 0, 0, 0, 271, 272, 5, 35, 0, 0, 272, 43, 1, 0, 0, 0, 25, 52, 54, 72,
+		80, 87, 97, 105, 113, 121, 129, 137, 152, 161, 173, 178, 191, 198, 205,
+		212, 223, 231, 239, 252, 261, 268,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -2572,28 +2572,20 @@ func (p *tesseractParser) TypeDefinition() (localctx ITypeDefinitionContext) {
 		p.SetState(157)
 		p.Field()
 	}
-	p.SetState(162)
+	p.SetState(161)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == tesseractParserT__0 {
+	for _la == tesseractParserAT || _la == tesseractParserIDENT {
 		{
 			p.SetState(158)
-			p.Match(tesseractParserT__0)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-		{
-			p.SetState(159)
 			p.Field()
 		}
 
-		p.SetState(164)
+		p.SetState(163)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -2601,7 +2593,7 @@ func (p *tesseractParser) TypeDefinition() (localctx ITypeDefinitionContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(165)
+		p.SetState(164)
 		p.Match(tesseractParserRCB)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -2739,7 +2731,7 @@ func (p *tesseractParser) DataType() (localctx IDataTypeContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(167)
+		p.SetState(166)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&137439997952) != 0) {
@@ -2850,15 +2842,15 @@ func (p *tesseractParser) List() (localctx IListContext) {
 	p.EnterRule(localctx, 22, tesseractParserRULE_list)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(169)
-		p.Match(tesseractParserT__1)
+		p.SetState(168)
+		p.Match(tesseractParserT__0)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
 	{
-		p.SetState(170)
+		p.SetState(169)
 		p.DataType()
 	}
 
@@ -2978,7 +2970,7 @@ func (p *tesseractParser) FieldType() (localctx IFieldTypeContext) {
 	localctx = NewFieldTypeContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 24, tesseractParserRULE_fieldType)
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(174)
+	p.SetState(173)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -2987,13 +2979,13 @@ func (p *tesseractParser) FieldType() (localctx IFieldTypeContext) {
 	switch p.GetTokenStream().LA(1) {
 	case tesseractParserINT, tesseractParserLONG, tesseractParserSHORT, tesseractParserBYTE, tesseractParserBOOL, tesseractParserSTRING, tesseractParserDATETIME, tesseractParserUNKNOWN, tesseractParserIDENT:
 		{
-			p.SetState(172)
+			p.SetState(171)
 			p.DataType()
 		}
 
-	case tesseractParserT__1:
+	case tesseractParserT__0:
 		{
-			p.SetState(173)
+			p.SetState(172)
 			p.List()
 		}
 
@@ -3151,7 +3143,7 @@ func (p *tesseractParser) Field() (localctx IFieldContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(179)
+	p.SetState(178)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3160,11 +3152,11 @@ func (p *tesseractParser) Field() (localctx IFieldContext) {
 
 	for _la == tesseractParserAT {
 		{
-			p.SetState(176)
+			p.SetState(175)
 			p.Attribute()
 		}
 
-		p.SetState(181)
+		p.SetState(180)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -3172,7 +3164,7 @@ func (p *tesseractParser) Field() (localctx IFieldContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(182)
+		p.SetState(181)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3180,7 +3172,7 @@ func (p *tesseractParser) Field() (localctx IFieldContext) {
 		}
 	}
 	{
-		p.SetState(183)
+		p.SetState(182)
 		p.FieldType()
 	}
 
@@ -3309,7 +3301,7 @@ func (p *tesseractParser) Assignment() (localctx IAssignmentContext) {
 	p.EnterRule(localctx, 28, tesseractParserRULE_assignment)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(185)
+		p.SetState(184)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3317,14 +3309,14 @@ func (p *tesseractParser) Assignment() (localctx IAssignmentContext) {
 		}
 	}
 	{
-		p.SetState(186)
+		p.SetState(185)
 		p.Match(tesseractParserEQ)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(192)
+	p.SetState(191)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3333,7 +3325,7 @@ func (p *tesseractParser) Assignment() (localctx IAssignmentContext) {
 	switch p.GetInterpreter().AdaptivePredict(p.BaseParser, p.GetTokenStream(), 15, p.GetParserRuleContext()) {
 	case 1:
 		{
-			p.SetState(187)
+			p.SetState(186)
 			p.Match(tesseractParserEscapedString)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3343,7 +3335,7 @@ func (p *tesseractParser) Assignment() (localctx IAssignmentContext) {
 
 	case 2:
 		{
-			p.SetState(188)
+			p.SetState(187)
 			p.Match(tesseractParserNUMBER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3355,7 +3347,7 @@ func (p *tesseractParser) Assignment() (localctx IAssignmentContext) {
 
 	case 4:
 		{
-			p.SetState(190)
+			p.SetState(189)
 			p.Match(tesseractParserIDENT)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3365,7 +3357,7 @@ func (p *tesseractParser) Assignment() (localctx IAssignmentContext) {
 
 	case 5:
 		{
-			p.SetState(191)
+			p.SetState(190)
 			p.Call()
 		}
 
@@ -3491,7 +3483,7 @@ func (s *ArgContext) ExitRule(listener antlr.ParseTreeListener) {
 func (p *tesseractParser) Arg() (localctx IArgContext) {
 	localctx = NewArgContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 30, tesseractParserRULE_arg)
-	p.SetState(199)
+	p.SetState(198)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3501,7 +3493,7 @@ func (p *tesseractParser) Arg() (localctx IArgContext) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(194)
+			p.SetState(193)
 			p.Match(tesseractParserNUMBER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3512,7 +3504,7 @@ func (p *tesseractParser) Arg() (localctx IArgContext) {
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(195)
+			p.SetState(194)
 			p.Match(tesseractParserEscapedString)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3523,7 +3515,7 @@ func (p *tesseractParser) Arg() (localctx IArgContext) {
 	case 3:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(196)
+			p.SetState(195)
 			p.Match(tesseractParserIDENT)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3534,7 +3526,7 @@ func (p *tesseractParser) Arg() (localctx IArgContext) {
 	case 4:
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(197)
+			p.SetState(196)
 			p.Match(tesseractParserDATA)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -3545,7 +3537,7 @@ func (p *tesseractParser) Arg() (localctx IArgContext) {
 	case 5:
 		p.EnterOuterAlt(localctx, 5)
 		{
-			p.SetState(198)
+			p.SetState(197)
 			p.Call()
 		}
 
@@ -3696,7 +3688,7 @@ func (p *tesseractParser) Call() (localctx ICallContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(201)
+		p.SetState(200)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3704,14 +3696,14 @@ func (p *tesseractParser) Call() (localctx ICallContext) {
 		}
 	}
 	{
-		p.SetState(202)
+		p.SetState(201)
 		p.Match(tesseractParserLP)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(206)
+	p.SetState(205)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -3720,39 +3712,39 @@ func (p *tesseractParser) Call() (localctx ICallContext) {
 
 	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&412350414856) != 0 {
 		{
-			p.SetState(203)
+			p.SetState(202)
 			p.Arg()
 		}
 
-		p.SetState(208)
+		p.SetState(207)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
 		}
 		_la = p.GetTokenStream().LA(1)
 	}
-	p.SetState(213)
+	p.SetState(212)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
 	}
 	_la = p.GetTokenStream().LA(1)
 
-	for _la == tesseractParserT__0 {
+	for _la == tesseractParserT__1 {
 		{
-			p.SetState(209)
-			p.Match(tesseractParserT__0)
+			p.SetState(208)
+			p.Match(tesseractParserT__1)
 			if p.HasError() {
 				// Recognition error - abort rule
 				goto errorExit
 			}
 		}
 		{
-			p.SetState(210)
+			p.SetState(209)
 			p.Arg()
 		}
 
-		p.SetState(215)
+		p.SetState(214)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -3760,7 +3752,7 @@ func (p *tesseractParser) Call() (localctx ICallContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(216)
+		p.SetState(215)
 		p.Match(tesseractParserRP)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3873,7 +3865,7 @@ func (p *tesseractParser) Attribute() (localctx IAttributeContext) {
 	p.EnterRule(localctx, 34, tesseractParserRULE_attribute)
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(218)
+		p.SetState(217)
 		p.Match(tesseractParserAT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -3881,7 +3873,7 @@ func (p *tesseractParser) Attribute() (localctx IAttributeContext) {
 		}
 	}
 	{
-		p.SetState(219)
+		p.SetState(218)
 		p.Call()
 	}
 
@@ -4017,7 +4009,7 @@ func (p *tesseractParser) Request() (localctx IRequestContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(224)
+	p.SetState(223)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4026,11 +4018,11 @@ func (p *tesseractParser) Request() (localctx IRequestContext) {
 
 	for _la == tesseractParserAT {
 		{
-			p.SetState(221)
+			p.SetState(220)
 			p.Attribute()
 		}
 
-		p.SetState(226)
+		p.SetState(225)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -4038,7 +4030,7 @@ func (p *tesseractParser) Request() (localctx IRequestContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(227)
+		p.SetState(226)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4178,7 +4170,7 @@ func (p *tesseractParser) Response() (localctx IResponseContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(232)
+	p.SetState(231)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4187,11 +4179,11 @@ func (p *tesseractParser) Response() (localctx IResponseContext) {
 
 	for _la == tesseractParserAT {
 		{
-			p.SetState(229)
+			p.SetState(228)
 			p.Attribute()
 		}
 
-		p.SetState(234)
+		p.SetState(233)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -4199,7 +4191,7 @@ func (p *tesseractParser) Response() (localctx IResponseContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(235)
+		p.SetState(234)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4388,7 +4380,7 @@ func (p *tesseractParser) Rpc() (localctx IRpcContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(240)
+	p.SetState(239)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4397,11 +4389,11 @@ func (p *tesseractParser) Rpc() (localctx IRpcContext) {
 
 	for _la == tesseractParserAT {
 		{
-			p.SetState(237)
+			p.SetState(236)
 			p.Attribute()
 		}
 
-		p.SetState(242)
+		p.SetState(241)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -4409,7 +4401,7 @@ func (p *tesseractParser) Rpc() (localctx IRpcContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(243)
+		p.SetState(242)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4417,7 +4409,7 @@ func (p *tesseractParser) Rpc() (localctx IRpcContext) {
 		}
 	}
 	{
-		p.SetState(244)
+		p.SetState(243)
 		p.Match(tesseractParserLP)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4425,11 +4417,11 @@ func (p *tesseractParser) Rpc() (localctx IRpcContext) {
 		}
 	}
 	{
-		p.SetState(245)
+		p.SetState(244)
 		p.Request()
 	}
 	{
-		p.SetState(246)
+		p.SetState(245)
 		p.Match(tesseractParserRP)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4437,11 +4429,11 @@ func (p *tesseractParser) Rpc() (localctx IRpcContext) {
 		}
 	}
 	{
-		p.SetState(247)
+		p.SetState(246)
 		p.Response()
 	}
 	{
-		p.SetState(248)
+		p.SetState(247)
 		p.Match(tesseractParserSEMI)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4707,7 +4699,7 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 	var _la int
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(253)
+	p.SetState(252)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4716,11 +4708,11 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 
 	for _la == tesseractParserAT {
 		{
-			p.SetState(250)
+			p.SetState(249)
 			p.Attribute()
 		}
 
-		p.SetState(255)
+		p.SetState(254)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -4728,7 +4720,7 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(256)
+		p.SetState(255)
 		_la = p.GetTokenStream().LA(1)
 
 		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&32505856) != 0) {
@@ -4739,7 +4731,7 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 		}
 	}
 	{
-		p.SetState(257)
+		p.SetState(256)
 		p.Match(tesseractParserIDENT)
 		if p.HasError() {
 			// Recognition error - abort rule
@@ -4747,14 +4739,14 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 		}
 	}
 	{
-		p.SetState(258)
+		p.SetState(257)
 		p.Match(tesseractParserLP)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(262)
+	p.SetState(261)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4763,11 +4755,11 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 
 	for _la == tesseractParserAT || _la == tesseractParserIDENT {
 		{
-			p.SetState(259)
+			p.SetState(258)
 			p.Request()
 		}
 
-		p.SetState(264)
+		p.SetState(263)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -4775,14 +4767,14 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(265)
+		p.SetState(264)
 		p.Match(tesseractParserRP)
 		if p.HasError() {
 			// Recognition error - abort rule
 			goto errorExit
 		}
 	}
-	p.SetState(269)
+	p.SetState(268)
 	p.GetErrorHandler().Sync(p)
 	if p.HasError() {
 		goto errorExit
@@ -4791,11 +4783,11 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 
 	for _la == tesseractParserAT || _la == tesseractParserIDENT {
 		{
-			p.SetState(266)
+			p.SetState(265)
 			p.Response()
 		}
 
-		p.SetState(271)
+		p.SetState(270)
 		p.GetErrorHandler().Sync(p)
 		if p.HasError() {
 			goto errorExit
@@ -4803,7 +4795,7 @@ func (p *tesseractParser) Api() (localctx IApiContext) {
 		_la = p.GetTokenStream().LA(1)
 	}
 	{
-		p.SetState(272)
+		p.SetState(271)
 		p.Match(tesseractParserSEMI)
 		if p.HasError() {
 			// Recognition error - abort rule

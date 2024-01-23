@@ -23,16 +23,16 @@ type (
     MyType {
         @JSON("field_name")
         @Validation("required")
-        X []int, 
+        X []int
         @Name("field_name2")
-        Y otherType,
-        Z otherType
+        Y bool
+        Z string
     }    
     MyType2 {
         @Name("field_name")
-        A int, 
-        B otherType,
-        C otherType
+        A int 
+        B []int64
+        C []string
 	}
 )
 

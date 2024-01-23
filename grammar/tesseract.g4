@@ -13,7 +13,7 @@ serviceStatement: attribute* SERVICE LP rpc* RP;
 gatewayStatement: attribute* GATEWAY LP api* RP;
 backendStatement: attribute* BACKEND LP (IDENT EQ GT call) RP;
 
-typeDefinition : attribute* IDENT LCB field (',' field)* RCB;
+typeDefinition : attribute* IDENT LCB field (field)* RCB;
 
 dataType : IDENT | INT | LONG | SHORT | BYTE | BOOL | STRING | DATETIME | UNKNOWN;
 list: '[]'dataType;
