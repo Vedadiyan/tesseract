@@ -3,6 +3,7 @@ package compiler
 import (
 	"bytes"
 	_ "embed"
+	"encoding/json"
 	"fmt"
 	"strconv"
 	"strings"
@@ -65,14 +66,14 @@ var (
 	_typeTemplate string
 )
 
-func CompilerTypes(packageName string, typeStatements []parser.ITypeStatementContext) (string, error) {
+func CompilerTypes(packageName string, typeStatements []parser.ITypeStatementContext) (string, string, error) {
 	types, err := GetTypes(packageName, typeStatements)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 	template, err := template.New("types").Parse(_typeTemplate)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
 	output := bytes.NewBufferString("")
 	err = template.Execute(output, struct {
@@ -80,9 +81,13 @@ func CompilerTypes(packageName string, typeStatements []parser.ITypeStatementCon
 		Types       map[string]*Type
 	}{PackageName: packageName, Types: types})
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
-	return output.String(), nil
+	metadata, err := json.Marshal(types)
+	if err != nil {
+		return "", "", err
+	}
+	return output.String(), string(metadata), nil
 }
 
 func GetTypes(packageName string, typeStatements []parser.ITypeStatementContext) (map[string]*Type, error) {

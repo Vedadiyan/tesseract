@@ -72,9 +72,11 @@ func main() {
 	test.AddErrorListener(&customErrorListener{})
 	//	name := test.PackageStatement().IDENT().GetText()
 	p := test.Program()
-	x, err := compiler.CompilerTypes("test", p.AllTypeStatement())
+	x, y, err := compiler.CompilerTypes("test", p.AllTypeStatement())
 	_ = x
+	_ = y
 	_ = err
 	os.WriteFile("test.proto", []byte(x), os.ModePerm)
+	os.WriteFile("test.json", []byte(y), os.ModePerm)
 	//	_ = name
 }
